@@ -1,0 +1,797 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monthly AI Brand Visibility Report - Lonsdale Metal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+            background: #fff;
+            padding: 0;
+            color: #454545;
+            line-height: 1.7em;
+            font-weight: 500;
+            font-size: 18px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: white;
+        }
+        
+        .header {
+            background: #3c0c6b;
+            color: white;
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .header-logo {
+            max-width: 220px;
+            margin: 0 auto 30px;
+        }
+        
+        .header-logo img {
+            width: 100%;
+            height: auto;
+        }
+        
+        .header h1 {
+            font-size: 48px;
+            margin-bottom: 15px;
+            font-weight: 700;
+            letter-spacing: 1px;
+            line-height: 1.3em;
+            color: #fff;
+        }
+        
+        .header-subtitle {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 20px;
+            color: #ebf0f4;
+        }
+        
+        .report-date {
+            background: rgba(255, 105, 0, 0.2);
+            display: inline-block;
+            padding: 10px 25px;
+            border-radius: 4px;
+            font-weight: 500;
+            font-size: 16px;
+            border-left: 3px solid #ff6900;
+            color: #fff;
+        }
+        
+        .content {
+            padding: 60px 40px;
+        }
+        
+        .section {
+            margin-bottom: 60px;
+        }
+        
+        .section-title {
+            font-size: 35px;
+            margin-bottom: 30px;
+            color: #3c0c6b;
+            font-weight: 700;
+            position: relative;
+            padding-bottom: 15px;
+            letter-spacing: 1px;
+            line-height: 1.3em;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #ff6900;
+        }
+        
+        .intro-text {
+            font-size: 18px;
+            color: #454545;
+            margin-bottom: 30px;
+            line-height: 1.8em;
+        }
+        
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .metric-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid #e1e8ed;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .metric-card:hover {
+            box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
+        }
+        
+        .metric-label {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 12px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .metric-value {
+            font-size: 48px;
+            font-weight: 700;
+            color: #3c0c6b;
+            line-height: 1;
+        }
+        
+        .metric-trend {
+            margin-top: 12px;
+            font-size: 16px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        .trend-up { color: #27ae60; }
+        .trend-down { color: #e74c3c; }
+        .trend-neutral { color: #f39c12; }
+        
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 30px 0;
+            font-size: 16px;
+            border: 1px solid #e1e8ed;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        thead tr {
+            background: #3c0c6b;
+            color: white;
+        }
+        
+        th {
+            padding: 18px 15px;
+            text-align: left;
+            font-weight: 700;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        td {
+            padding: 18px 15px;
+            text-align: left;
+            border-bottom: 1px solid #e1e8ed;
+        }
+        
+        tbody tr {
+            transition: background 0.2s;
+        }
+        
+        tbody tr:hover {
+            background-color: #f8f9fa;
+        }
+        
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+        
+        .status-excellent {
+            background-color: #d4edda;
+            color: #155724;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .status-good {
+            background-color: #d1ecf1;
+            color: #0c5460;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .status-fair {
+            background-color: #fff3cd;
+            color: #856404;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .status-poor {
+            background-color: #f8d7da;
+            color: #721c24;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 4px;
+            display: inline-block;
+        }
+        
+        .trend-arrow {
+            font-size: 1.1em;
+        }
+        
+        .action-plan {
+            background: #f5f5f5;
+            padding: 40px;
+            border-radius: 8px;
+            margin-top: 40px;
+            border-left: 4px solid #ff6900;
+        }
+        
+        .action-item {
+            background: white;
+            padding: 25px;
+            margin: 20px 0;
+            border-radius: 8px;
+            border-left: 4px solid #e1e8ed;
+            transition: all 0.3s;
+        }
+        
+        .action-item:hover {
+            box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        }
+        
+        .priority-high {
+            border-left-color: #e74c3c;
+        }
+        
+        .priority-medium {
+            border-left-color: #f39c12;
+        }
+        
+        .priority-low {
+            border-left-color: #27ae60;
+        }
+        
+        .action-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .action-title {
+            font-weight: 700;
+            font-size: 20px;
+            color: #3c0c6b;
+        }
+        
+        .priority-badge {
+            padding: 8px 20px;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .badge-high {
+            background-color: #e74c3c;
+            color: white;
+        }
+        
+        .badge-medium {
+            background-color: #f39c12;
+            color: white;
+        }
+        
+        .badge-low {
+            background-color: #27ae60;
+            color: white;
+        }
+        
+        .action-details {
+            color: #454545;
+            line-height: 1.8em;
+        }
+        
+        .action-details p {
+            margin: 8px 0;
+        }
+        
+        .action-details strong {
+            color: #3c0c6b;
+            font-weight: 700;
+        }
+        
+        .insight-box {
+            background: white;
+            border: 2px solid #ff6900;
+            border-radius: 8px;
+            padding: 30px;
+            margin: 30px 0;
+            position: relative;
+        }
+        
+        .insight-box::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: #ff6900;
+            border-radius: 8px 8px 0 0;
+        }
+        
+        .insight-title {
+            font-weight: 700;
+            color: #3c0c6b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            font-size: 22px;
+            letter-spacing: 1px;
+        }
+        
+        .insight-icon {
+            margin-right: 12px;
+            font-size: 1.4em;
+        }
+        
+        .insight-content {
+            color: #454545;
+            line-height: 1.8em;
+        }
+        
+        .key-finding {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 6px;
+            margin: 20px 0;
+            border-left: 3px solid #ff6900;
+        }
+        
+        .key-finding strong {
+            color: #3c0c6b;
+            font-weight: 700;
+        }
+        
+        ul {
+            margin-left: 25px;
+            margin-top: 15px;
+        }
+        
+        ul li {
+            margin: 10px 0;
+            color: #454545;
+            line-height: 1.8em;
+        }
+        
+        h2 {
+            color: #3c0c6b;
+        }
+        
+        h3 {
+            color: #3c0c6b;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                padding: 40px 20px 30px;
+            }
+            
+            .header h1 {
+                font-size: 28px;
+            }
+            
+            .content {
+                padding: 40px 20px;
+            }
+            
+            .section-title {
+                font-size: 24px;
+            }
+            
+            .metric-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .action-plan {
+                padding: 25px;
+            }
+            
+            table {
+                font-size: 14px;
+            }
+            
+            th, td {
+                padding: 12px 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="header-logo">
+                <img src="https://www.maratopia.co.uk/wp-content/uploads/2024/03/maratopia-logo-header-white-2024.png" alt="Maratopia Logo">
+            </div>
+            <h1>AI Brand Visibility Report</h1>
+            <p class="header-subtitle">Lonsdale Metal - GEO Performance Analysis</p>
+            <div class="report-date">Report Period: October 2025</div>
+        </div>
+        
+        <div class="content">
+            <!-- Executive Summary -->
+            <div class="section">
+                <h2 class="section-title">Executive Summary</h2>
+                <p class="intro-text">Your AI visibility sits at a respectable 77/100, but there's a concerning trend: you're losing ground to competitors. This report breaks down exactly where you stand, what's working, and the precise actions needed to overtake your competition.</p>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Overall AI Visibility Score</div>
+                        <div class="metric-value">77<span style="font-size: 0.5em; color: #666;">/100</span></div>
+                        <div class="metric-trend trend-down">↓ 15 points behind competition</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Total AI Citations</div>
+                        <div class="metric-value">138</div>
+                        <div class="metric-trend trend-up">↑ From 25 active sources</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Market Position</div>
+                        <div class="metric-value">#2</div>
+                        <div class="metric-trend trend-neutral">→ Behind Velux</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Link Health Score</div>
+                        <div class="metric-value">86%</div>
+                        <div class="metric-trend trend-up">↑ 200 links working</div>
+                    </div>
+                </div>
+                
+                <div class="insight-box">
+                    <div class="insight-title">
+                        <span class="insight-icon">💡</span>
+                        Key Finding
+                    </div>
+                    <div class="insight-content">
+                        <p><strong>Velux is beating you across multiple AI platforms.</strong> Your strongest performance comes from Sonar (Perplexity) at 87/100. However, Claude (Anthropic) shows you at 0/100 across all topics, indicating you're completely absent from their training data. This is a critical gap that's costing you visibility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Platform Performance -->
+            <div class="section">
+                <h2 class="section-title">Multi-Model AI Brand Performance</h2>
+                <p class="intro-text">We've tested how different AI models respond to queries about your products and services. Here's where you stand:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topic Category</th>
+                            <th>Sonar (Perplexity)</th>
+                            <th>ChatGPT</th>
+                            <th>Gemini (Google)</th>
+                            <th>Claude (Anthropic)</th>
+                            <th>Overall Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Glazing Products</strong></td>
+                            <td><span class="status-good">77/100</span> <span class="trend-arrow">↓</span></td>
+                            <td><span class="status-excellent">84/100</span> <span class="trend-arrow">↑</span></td>
+                            <td><span class="status-excellent">78-82/100</span> <span class="trend-arrow">↑</span></td>
+                            <td><span class="status-poor">0/100</span> <span class="trend-arrow">↓</span></td>
+                            <td><span class="status-fair">-15 vs comp</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Glazing Bars</strong></td>
+                            <td><span class="status-excellent">87/100</span> <span class="trend-arrow">↑</span></td>
+                            <td><span class="status-excellent">89/100</span> <span class="trend-arrow">↑</span></td>
+                            <td><span class="status-excellent">77-93/100</span> <span class="trend-arrow">↑</span></td>
+                            <td><span class="status-poor">0/100</span> <span class="trend-arrow">↓</span></td>
+                            <td><span class="status-good">+8 vs comp</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Website Overview</strong></td>
+                            <td><span class="status-excellent">84/100</span> <span class="trend-arrow">↑</span></td>
+                            <td><span class="status-poor">0/100</span> <span class="trend-arrow">↓</span></td>
+                            <td><span class="status-excellent">86/100</span> <span class="trend-arrow">↓</span></td>
+                            <td><span class="status-poor">0/100</span> <span class="trend-arrow">↓</span></td>
+                            <td><span class="status-poor">-48 vs comp</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-box">
+                    <div class="insight-title">
+                        <span class="insight-icon">⚠️</span>
+                        Critical Gap
+                    </div>
+                    <div class="insight-content">
+                        <p><strong>Claude shows 0/100 across all topics.</strong> This means you're completely absent from their training data. Since Claude powers numerous enterprise AI applications, this represents a significant missed opportunity for B2B visibility.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Competitor Benchmark -->
+            <div class="section">
+                <h2 class="section-title">Competitor Benchmarking</h2>
+                <p class="intro-text">Here's how you stack up against your main competitors across all AI platforms:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Domain</th>
+                            <th>Sonar</th>
+                            <th>ChatGPT</th>
+                            <th>Gemini</th>
+                            <th>Claude</th>
+                            <th>Avg Score</th>
+                            <th>Position</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background: #f8f9fa;">
+                            <td><strong>lonsdalemetal.co.uk</strong></td>
+                            <td><span class="status-excellent">84</span></td>
+                            <td><span class="status-poor">0</span></td>
+                            <td><span class="status-excellent">86</span></td>
+                            <td><span class="status-poor">0</span></td>
+                            <td><strong>42.5</strong></td>
+                            <td><strong>#2</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>velux.co.uk</strong> 👑</td>
+                            <td><span class="status-excellent">83</span></td>
+                            <td><span class="status-excellent">87</span></td>
+                            <td><span class="status-excellent">89-87</span></td>
+                            <td><span class="status-excellent">91</span></td>
+                            <td><strong>87.4</strong></td>
+                            <td><strong>#1</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>vitroglazings.com</strong></td>
+                            <td><span class="status-excellent">83</span></td>
+                            <td><span class="status-poor">0</span></td>
+                            <td><span class="status-excellent">72</span></td>
+                            <td><span class="status-poor">0</span></td>
+                            <td><strong>38.75</strong></td>
+                            <td>#3</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="key-finding">
+                    <p><strong>Plain English:</strong> Velux dominates with 91/100 on Claude and strong performance across all platforms. Your strength lies in Gemini (Google) performance, but you need urgent work to appear in ChatGPT and Claude responses.</p>
+                </div>
+            </div>
+
+            <!-- Topic Coverage Analysis -->
+            <div class="section">
+                <h2 class="section-title">Content Gaps & Opportunities</h2>
+                <p class="intro-text">We've identified specific topic areas where your content is missing or insufficient for AI training data:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Topic Category</th>
+                            <th>Coverage Status</th>
+                            <th>Gap Type</th>
+                            <th>Priority Level</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Acoustic Performance</strong></td>
+                            <td><span class="status-poor">Critical Gap</span></td>
+                            <td>Missing sound insulation content</td>
+                            <td><span class="status-poor">🔴 Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Thermal Performance</strong></td>
+                            <td><span class="status-fair">Significant Gap</span></td>
+                            <td>Insufficient U-value data</td>
+                            <td><span class="status-fair">🟡 Significant</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Glass Coatings</strong></td>
+                            <td><span class="status-poor">Critical Gap</span></td>
+                            <td>Limited coating information</td>
+                            <td><span class="status-poor">🔴 Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Architectural Resources</strong></td>
+                            <td><span class="status-fair">Significant Gap</span></td>
+                            <td>Limited technical specs</td>
+                            <td><span class="status-fair">🟡 Significant</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Technical Documentation</strong></td>
+                            <td><span class="status-poor">Critical Gap</span></td>
+                            <td>No searchable technical docs</td>
+                            <td><span class="status-poor">🔴 Critical</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Energy Efficiency</strong></td>
+                            <td><span class="status-fair">Significant Gap</span></td>
+                            <td>Limited thermal data</td>
+                            <td><span class="status-fair">🟡 Significant</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Citation Analysis -->
+            <div class="section">
+                <h2 class="section-title">Citation Analysis</h2>
+                <p class="intro-text">How AI models are currently linking to your content (or not):</p>
+                
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Knowledge Queries</div>
+                        <div class="metric-value">25</div>
+                        <div class="metric-trend trend-up">Primary source position</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Commercial Queries</div>
+                        <div class="metric-value">0</div>
+                        <div class="metric-trend trend-down">No commercial visibility</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Active Sources</div>
+                        <div class="metric-value">48</div>
+                        <div class="metric-trend trend-neutral">Across 138 citations</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Link Error Rate</div>
+                        <div class="metric-value">14%</div>
+                        <div class="metric-trend trend-down">404 errors detected</div>
+                    </div>
+                </div>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>AI Model</th>
+                            <th>Your Links</th>
+                            <th>Competitor Links</th>
+                            <th>Citation Quality</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Sonar</strong></td>
+                            <td><span class="status-excellent">3 high-quality</span></td>
+                            <td><span class="status-fair">11 competitor</span></td>
+                            <td><span class="status-good">Strong</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>ChatGPT</strong></td>
+                            <td><span class="status-poor">0 links</span></td>
+                            <td><span class="status-fair">0 competitor</span></td>
+                            <td><span class="status-poor">None</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini</strong></td>
+                            <td><span class="status-poor">0 links</span></td>
+                            <td><span class="status-poor">1 competitor</span></td>
+                            <td><span class="status-poor">Weak</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude</strong></td>
+                            <td><span class="status-poor">0 links</span></td>
+                            <td><span class="status-poor">0 competitor</span></td>
+                            <td><span class="status-poor">None</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- Trend Analysis -->
+            <div class="section">
+                <h2 class="section-title">Trend Analysis</h2>
+                <p class="intro-text">How your AI visibility has changed over the past month:</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Metric</th>
+                            <th>September 2025</th>
+                            <th>October 2025</th>
+                            <th>Change</th>
+                            <th>Trend</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Overall Visibility</strong></td>
+                            <td>82</td>
+                            <td>77</td>
+                            <td><span class="status-poor">-5 points</span></td>
+                            <td class="trend-down">↓ Declining</td>
+                        </tr>
+                        <tr>
+                            <td><strong>AI Model Coverage</strong></td>
+                            <td>3/4 models</td>
+                            <td>2/4 models</td>
+                            <td><span class="status-poor">Lost ChatGPT</span></td>
+                            <td class="trend-down">↓ Declining</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Citation Frequency</strong></td>
+                            <td>120</td>
+                            <td>138</td>
+                            <td><span class="status-good">+18 citations</span></td>
+                            <td class="trend-up">↑ Growing</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Competitor Gap</strong></td>
+                            <td>-10 points</td>
+                            <td>-50 points</td>
+                            <td><span class="status-poor">-40 pts wider</span></td>
+                            <td class="trend-down">↓ Worsening</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Link Health</strong></td>
+                            <td>82%</td>
+                            <td>86%</td>
+                            <td><span class="status-good">+4%</span></td>
+                            <td class="trend-up">↑ Improving</td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+                <div class="insight-box">
+                    <div class="insight-title">
+                        <span class="insight-icon">📉</span>
+                        Trend Alert
+                    </div>
+                    <div class="insight-content">
+                        <p>Your AI visibility dropped 5 points this month while Velux improved. The gap between you and the market leader has widened from -10 to <strong>-50 points</strong>. Without action, this trend will continue.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Action Plan -->
+            <div class="section">
+                <h2 class="section-title">Your Action Plan</h2>
+                <p class="intro-text">Based on our analysis, here's exactly what needs doing to close the gap with your competitors. We've prioritised actions by potential impact and urgency:</p>
+                
+                <div class="action-plan">
+                    <div class="action-item priority-high">
+                        <div class="action-header">
+                            <div class="action-title">1. Create Technical Documentation Library</div>
+                            <span class="priority-badge badge-high">HIGH PRIORITY</span>
+                        </div>
+                        <div class="action-details">
+                            <p><strong>Action:</strong> Develop comprehensive, AI-crawlable technical documentation covering acoustic performance, thermal values, glass coatings, and specifications.</p>
+                            <p><strong>Impact:</strong> +25-35 points across ChatGPT and Claude</p>
+                            <p><strong>Timeline:</strong> 4-6 weeks</p>
+                            <p><strong>Resources:</strong> Technical writing, structured data markup, PDF optimisation</p
